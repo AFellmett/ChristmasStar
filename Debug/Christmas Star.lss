@@ -1,0 +1,323 @@
+
+Christmas Star.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000014c  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800040  00800040  000001c0  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000001e  00800040  00800040  000001c0  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000001c0  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000001f0  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000060  00000000  00000000  0000022c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000009ff  00000000  00000000  0000028c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000059a  00000000  00000000  00000c8b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000574  00000000  00000000  00001225  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000a8  00000000  00000000  0000179c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000003a1  00000000  00000000  00001844  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000007ce  00000000  00000000  00001be5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000040  00000000  00000000  000023b3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0a c0       	rjmp	.+20     	; 0x16 <__ctors_end>
+   2:	19 c0       	rjmp	.+50     	; 0x36 <__bad_interrupt>
+   4:	18 c0       	rjmp	.+48     	; 0x36 <__bad_interrupt>
+   6:	17 c0       	rjmp	.+46     	; 0x36 <__bad_interrupt>
+   8:	16 c0       	rjmp	.+44     	; 0x36 <__bad_interrupt>
+   a:	15 c0       	rjmp	.+42     	; 0x36 <__bad_interrupt>
+   c:	14 c0       	rjmp	.+40     	; 0x36 <__bad_interrupt>
+   e:	13 c0       	rjmp	.+38     	; 0x36 <__bad_interrupt>
+  10:	12 c0       	rjmp	.+36     	; 0x36 <__bad_interrupt>
+  12:	11 c0       	rjmp	.+34     	; 0x36 <__bad_interrupt>
+  14:	10 c0       	rjmp	.+32     	; 0x36 <__bad_interrupt>
+
+00000016 <__ctors_end>:
+  16:	11 27       	eor	r17, r17
+  18:	1f bf       	out	0x3f, r17	; 63
+  1a:	cf e5       	ldi	r28, 0x5F	; 95
+  1c:	d0 e0       	ldi	r29, 0x00	; 0
+  1e:	de bf       	out	0x3e, r29	; 62
+  20:	cd bf       	out	0x3d, r28	; 61
+
+00000022 <__do_clear_bss>:
+  22:	20 e0       	ldi	r18, 0x00	; 0
+  24:	a0 e4       	ldi	r26, 0x40	; 64
+  26:	b0 e0       	ldi	r27, 0x00	; 0
+  28:	01 c0       	rjmp	.+2      	; 0x2c <.do_clear_bss_start>
+
+0000002a <.do_clear_bss_loop>:
+  2a:	1d 93       	st	X+, r17
+
+0000002c <.do_clear_bss_start>:
+  2c:	ae 35       	cpi	r26, 0x5E	; 94
+  2e:	b2 07       	cpc	r27, r18
+  30:	e1 f7       	brne	.-8      	; 0x2a <.do_clear_bss_loop>
+  32:	3e d0       	rcall	.+124    	; 0xb0 <main>
+  34:	89 c0       	rjmp	.+274    	; 0x148 <_exit>
+
+00000036 <__bad_interrupt>:
+  36:	e4 cf       	rjmp	.-56     	; 0x0 <__vectors>
+
+00000038 <ws2812_setleds>:
+   ws2812_setleds_pin(ledarray,leds, _BV(ws2812_pin));
+}
+
+void inline ws2812_setleds_pin(struct cRGB *ledarray, uint16_t leds, uint8_t pinmask)
+{
+  ws2812_sendarray_mask((uint8_t*)ledarray,leds+leds+leds,pinmask);
+  38:	46 2f       	mov	r20, r22
+  3a:	57 2f       	mov	r21, r23
+  3c:	44 0f       	add	r20, r20
+  3e:	55 1f       	adc	r21, r21
+  40:	64 0f       	add	r22, r20
+  42:	75 1f       	adc	r23, r21
+void inline ws2812_sendarray_mask(uint8_t *data,uint16_t datlen,uint8_t maskhi)
+{
+  uint8_t curbyte,ctr,masklo;
+  uint8_t sreg_prev;
+  
+  ws2812_DDRREG |= maskhi; // Enable output
+  44:	0a 9a       	sbi	0x01, 2	; 1
+  
+  masklo	=~maskhi&ws2812_PORTREG;
+  46:	52 b1       	in	r21, 0x02	; 2
+  48:	5b 7f       	andi	r21, 0xFB	; 251
+  maskhi |=        ws2812_PORTREG;
+  4a:	a2 b1       	in	r26, 0x02	; 2
+  4c:	a4 60       	ori	r26, 0x04	; 4
+  
+  sreg_prev=SREG;
+  4e:	bf b7       	in	r27, 0x3f	; 63
+  cli();  
+  50:	f8 94       	cli
+
+  while (datlen--) {
+  52:	61 17       	cp	r22, r17
+  54:	71 07       	cpc	r23, r17
+  56:	09 f4       	brne	.+2      	; 0x5a <__SREG__+0x1b>
+  58:	22 c0       	rjmp	.+68     	; 0x9e <loop56+0x38>
+  5a:	e8 2f       	mov	r30, r24
+  5c:	f9 2f       	mov	r31, r25
+  5e:	86 0f       	add	r24, r22
+  60:	97 1f       	adc	r25, r23
+    curbyte=*data++;
+  62:	41 91       	ld	r20, Z+
+    
+    asm volatile(
+  64:	68 e0       	ldi	r22, 0x08	; 8
+
+00000066 <loop56>:
+  66:	a2 b9       	out	0x02, r26	; 2
+  68:	47 ff       	sbrs	r20, 7
+  6a:	52 b9       	out	0x02, r21	; 2
+  6c:	44 0f       	add	r20, r20
+  6e:	00 00       	nop
+  70:	00 c0       	rjmp	.+0      	; 0x72 <loop56+0xc>
+  72:	52 b9       	out	0x02, r21	; 2
+  74:	00 00       	nop
+  76:	00 c0       	rjmp	.+0      	; 0x78 <loop56+0x12>
+  78:	00 c0       	rjmp	.+0      	; 0x7a <loop56+0x14>
+  7a:	00 c0       	rjmp	.+0      	; 0x7c <loop56+0x16>
+  7c:	00 c0       	rjmp	.+0      	; 0x7e <loop56+0x18>
+  7e:	00 c0       	rjmp	.+0      	; 0x80 <loop56+0x1a>
+  80:	00 c0       	rjmp	.+0      	; 0x82 <loop56+0x1c>
+  82:	00 c0       	rjmp	.+0      	; 0x84 <loop56+0x1e>
+  84:	00 c0       	rjmp	.+0      	; 0x86 <loop56+0x20>
+  86:	00 c0       	rjmp	.+0      	; 0x88 <loop56+0x22>
+  88:	00 c0       	rjmp	.+0      	; 0x8a <loop56+0x24>
+  8a:	00 c0       	rjmp	.+0      	; 0x8c <loop56+0x26>
+  8c:	00 c0       	rjmp	.+0      	; 0x8e <loop56+0x28>
+  8e:	00 c0       	rjmp	.+0      	; 0x90 <loop56+0x2a>
+  90:	00 c0       	rjmp	.+0      	; 0x92 <loop56+0x2c>
+  92:	00 c0       	rjmp	.+0      	; 0x94 <loop56+0x2e>
+  94:	6a 95       	dec	r22
+  96:	39 f7       	brne	.-50     	; 0x66 <loop56>
+  maskhi |=        ws2812_PORTREG;
+  
+  sreg_prev=SREG;
+  cli();  
+
+  while (datlen--) {
+  98:	e8 17       	cp	r30, r24
+  9a:	f9 07       	cpc	r31, r25
+  9c:	11 f7       	brne	.-60     	; 0x62 <__stack+0x3>
+    :	"=&d" (ctr)
+    :	"r" (curbyte), "I" (_SFR_IO_ADDR(ws2812_PORTREG)), "r" (maskhi), "r" (masklo)
+    );
+  }
+  
+  SREG=sreg_prev;
+  9e:	bf bf       	out	0x3f, r27	; 63
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  a0:	47 e5       	ldi	r20, 0x57	; 87
+  a2:	52 e0       	ldi	r21, 0x02	; 2
+  a4:	41 50       	subi	r20, 0x01	; 1
+  a6:	50 40       	sbci	r21, 0x00	; 0
+  a8:	e9 f7       	brne	.-6      	; 0xa4 <loop56+0x3e>
+  aa:	00 c0       	rjmp	.+0      	; 0xac <loop56+0x46>
+  ac:	00 00       	nop
+  ae:	08 95       	ret
+
+000000b0 <main>:
+{
+	uint8_t i = 0;
+	uint8_t selectedColor = 0;	
+	#ifdef __AVR_ATtiny10__
+
+	CCP=0xD8;		// configuration change protection, write signature
+  b0:	48 ed       	ldi	r20, 0xD8	; 216
+  b2:	4c bf       	out	0x3c, r20	; 60
+
+	CLKPSR=0;		// set cpu clock prescaler =1 (8Mhz) (attiny 4/5/9/10)
+  b4:	16 bf       	out	0x36, r17	; 54
+
+	#endif
+
+
+	// Set direction (1 = output; 0 = input)
+	DDRB |= (1<<DDB2);
+  b6:	0a 9a       	sbi	0x01, 2	; 1
+//	DDRB &= ~(1<<DDB1);
+	
+	// Set pull-up (1 = enable; 0 = disable)
+	PUEB &= ~(1<<PUEB2);
+  b8:	1a 98       	cbi	0x03, 2	; 3
+//	PUEB |= (1<<PUEB1);
+	
+	// Set level (1 = HIGH; 0 = LOW)
+	PORTB &= ~(1 << PORTB2);
+  ba:	12 98       	cbi	0x02, 2	; 2
+	{
+		led[i-1].r=0;led[i-1].g=0;led[i-1].b=0;
+	}
+	
+	//Rainbowcolors
+	colors[0].r=150; colors[0].g=150; colors[0].b=150;
+  bc:	46 e9       	ldi	r20, 0x96	; 150
+  be:	41 a9       	sts	0x41, r20	; 0x800041 <_edata+0x1>
+  c0:	40 a9       	sts	0x40, r20	; 0x800040 <_edata>
+  c2:	42 a9       	sts	0x42, r20	; 0x800042 <_edata+0x2>
+	colors[1].r=255; colors[1].g=000; colors[1].b=000;//red
+  c4:	4f ef       	ldi	r20, 0xFF	; 255
+  c6:	44 a9       	sts	0x44, r20	; 0x800044 <_edata+0x4>
+  c8:	13 a9       	sts	0x43, r17	; 0x800043 <_edata+0x3>
+  ca:	15 a9       	sts	0x45, r17	; 0x800045 <_edata+0x5>
+	colors[2].r=255; colors[2].g=100; colors[2].b=000;//orange
+  cc:	47 a9       	sts	0x47, r20	; 0x800047 <_edata+0x7>
+  ce:	54 e6       	ldi	r21, 0x64	; 100
+  d0:	56 a9       	sts	0x46, r21	; 0x800046 <_edata+0x6>
+  d2:	18 a9       	sts	0x48, r17	; 0x800048 <_edata+0x8>
+	colors[3].r=100; colors[3].g=255; colors[3].b=000;//yellow
+  d4:	5a a9       	sts	0x4a, r21	; 0x80004a <_edata+0xa>
+  d6:	49 a9       	sts	0x49, r20	; 0x800049 <_edata+0x9>
+  d8:	1b a9       	sts	0x4b, r17	; 0x80004b <_edata+0xb>
+	colors[4].r=000; colors[4].g=255; colors[4].b=000;//green
+  da:	1d a9       	sts	0x4d, r17	; 0x80004d <_edata+0xd>
+  dc:	4c a9       	sts	0x4c, r20	; 0x80004c <_edata+0xc>
+  de:	1e a9       	sts	0x4e, r17	; 0x80004e <_edata+0xe>
+	colors[5].r=000; colors[5].g=100; colors[5].b=255;//light blue (türkis)
+  e0:	10 ab       	sts	0x50, r17	; 0x800050 <_edata+0x10>
+  e2:	5f a9       	sts	0x4f, r21	; 0x80004f <_edata+0xf>
+  e4:	41 ab       	sts	0x51, r20	; 0x800051 <_edata+0x11>
+	colors[6].r=000; colors[6].g=000; colors[6].b=255;//blue
+  e6:	13 ab       	sts	0x53, r17	; 0x800053 <_edata+0x13>
+  e8:	12 ab       	sts	0x52, r17	; 0x800052 <_edata+0x12>
+  ea:	44 ab       	sts	0x54, r20	; 0x800054 <_edata+0x14>
+	colors[7].r=0; colors[7].g=0; colors[7].b=0;//off
+  ec:	16 ab       	sts	0x56, r17	; 0x800056 <_edata+0x16>
+  ee:	15 ab       	sts	0x55, r17	; 0x800055 <_edata+0x15>
+  f0:	17 ab       	sts	0x57, r17	; 0x800057 <_edata+0x17>
+
+
+int main(void)
+{
+	uint8_t i = 0;
+	uint8_t selectedColor = 0;	
+  f2:	c0 e0       	ldi	r28, 0x00	; 0
+	colors[6].r=000; colors[6].g=000; colors[6].b=255;//blue
+	colors[7].r=0; colors[7].g=0; colors[7].b=0;//off
+
+	while(1)
+	{
+		selectedColor++;
+  f4:	cf 5f       	subi	r28, 0xFF	; 255
+		selectedColor%=8;
+  f6:	c7 70       	andi	r28, 0x07	; 7
+		led[0].r = colors[selectedColor].r;
+  f8:	4c 2f       	mov	r20, r28
+  fa:	50 e0       	ldi	r21, 0x00	; 0
+  fc:	4c 0f       	add	r20, r28
+  fe:	51 1f       	adc	r21, r17
+ 100:	4c 0f       	add	r20, r28
+ 102:	51 1f       	adc	r21, r17
+ 104:	e4 2f       	mov	r30, r20
+ 106:	f5 2f       	mov	r31, r21
+ 108:	e0 5c       	subi	r30, 0xC0	; 192
+ 10a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 10c:	ef 5f       	subi	r30, 0xFF	; 255
+ 10e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 110:	60 81       	ld	r22, Z
+ 112:	e1 50       	subi	r30, 0x01	; 1
+ 114:	f0 40       	sbci	r31, 0x00	; 0
+ 116:	69 ab       	sts	0x59, r22	; 0x800059 <led+0x1>
+		led[0].g = colors[selectedColor].g;
+ 118:	50 81       	ld	r21, Z
+ 11a:	58 ab       	sts	0x58, r21	; 0x800058 <led>
+		led[0].b = colors[selectedColor].b;
+ 11c:	ee 5f       	subi	r30, 0xFE	; 254
+ 11e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 120:	40 81       	ld	r20, Z
+ 122:	4a ab       	sts	0x5a, r20	; 0x80005a <led+0x2>
+		led[1].r = colors[selectedColor].r;
+ 124:	6c ab       	sts	0x5c, r22	; 0x80005c <led+0x4>
+		led[1].g = colors[selectedColor].g;
+ 126:	5b ab       	sts	0x5b, r21	; 0x80005b <led+0x3>
+		led[1].b = colors[selectedColor].b;
+ 128:	4d ab       	sts	0x5d, r20	; 0x80005d <led+0x5>
+		ws2812_setleds(led,MAXPIX);
+ 12a:	62 e0       	ldi	r22, 0x02	; 2
+ 12c:	70 e0       	ldi	r23, 0x00	; 0
+ 12e:	88 e5       	ldi	r24, 0x58	; 88
+ 130:	90 e0       	ldi	r25, 0x00	; 0
+ 132:	82 df       	rcall	.-252    	; 0x38 <ws2812_setleds>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 134:	4f ef       	ldi	r20, 0xFF	; 255
+ 136:	54 e3       	ldi	r21, 0x34	; 52
+ 138:	6c e0       	ldi	r22, 0x0C	; 12
+ 13a:	41 50       	subi	r20, 0x01	; 1
+ 13c:	50 40       	sbci	r21, 0x00	; 0
+ 13e:	60 40       	sbci	r22, 0x00	; 0
+ 140:	e1 f7       	brne	.-8      	; 0x13a <__DATA_REGION_LENGTH__+0x3a>
+ 142:	00 c0       	rjmp	.+0      	; 0x144 <__DATA_REGION_LENGTH__+0x44>
+ 144:	00 00       	nop
+ 146:	d6 cf       	rjmp	.-84     	; 0xf4 <main+0x44>
+
+00000148 <_exit>:
+ 148:	f8 94       	cli
+
+0000014a <__stop_program>:
+ 14a:	ff cf       	rjmp	.-2      	; 0x14a <__stop_program>
