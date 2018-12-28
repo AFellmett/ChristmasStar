@@ -13,7 +13,8 @@
 #include "light_ws2812.h"
 
 #define MAXPIX 2
-#define FADE 1
+#define COLORLENGTH (MAXPIX/2)
+#define FADE (256/COLORLENGTH)
 #define MAXCOLORS 9
 
 struct cRGB colors[MAXCOLORS];
@@ -28,7 +29,6 @@ ISR(PCINT0_vect)
 		selectedColor%=MAXCOLORS;
 	}
 }
-
 
 int main(void)
 {
@@ -73,18 +73,18 @@ int main(void)
 	colors[5].r=000; colors[5].g=255; colors[5].b=000;//green
 	colors[6].r=000; colors[6].g=100; colors[6].b=255;//light blue (türkis)
 	colors[7].r=000; colors[7].g=000; colors[7].b=255;//blue
-	colors[8].r=155; colors[8].g=000; colors[8].b=255;//violet
-
+	colors[8].r=100; colors[8].g=000; colors[8].b=255;//violet
 	uint8_t currentselection = MAXCOLORS;
 	while(1)
 	{	
 		if(currentselection != selectedColor)
-		{
-			for(i = 0; i < MAXPIX;i++)
-				ws2812_sendarray((uint8_t *)&colors[selectedColor],3);		
+		{		
+			for(i= 0; i < MAXPIX; i++)
+			{
+				ws2812_sendarray((uint8_t*)&colors[selectedColor],3);
+			}
+			currentselection = selectedColor;
 		}
-		_delay_ms(500);
-		selectedColor++;
-		selectedColor%=MAXCOLORS;
+		_delay_ms(250);
 	}
 }

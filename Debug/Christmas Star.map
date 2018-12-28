@@ -1,15 +1,18 @@
 Archive member included to satisfy reference by file (symbol)
 
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_udivmodqi4.o)
+                              main.o (__udivmodqi4)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
                               C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.3.172/gcc/dev/attiny10/avrtiny/crtattiny10.o (exit)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_copy_data.o)
+                              main.o (__do_copy_data)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_clear_bss.o)
                               main.o (__do_clear_bss)
 
 Allocating common symbols
 Common symbol       size              file
 
-colors              0x18              main.o
-led                 0x6               main.o
+colors              0x1b              main.o
 
 Discarded input sections
 
@@ -18,17 +21,31 @@ Discarded input sections
  .text          0x00000000        0x0 light_ws2812.o
  .data          0x00000000        0x0 light_ws2812.o
  .bss           0x00000000        0x0 light_ws2812.o
+ .text.ws2812_setleds
+                0x00000000       0x78 light_ws2812.o
  .text.ws2812_setleds_pin
                 0x00000000       0x8c light_ws2812.o
  .text.ws2812_setleds_rgbw
                 0x00000000       0x74 light_ws2812.o
- .text.ws2812_sendarray
-                0x00000000       0x5e light_ws2812.o
  .text.ws2812_sendarray_mask
                 0x00000000       0x72 light_ws2812.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_udivmodqi4.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_udivmodqi4.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_udivmodqi4.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_udivmodqi4.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_udivmodqi4.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_udivmodqi4.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_udivmodqi4.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_udivmodqi4.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_udivmodqi4.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
@@ -45,6 +62,22 @@ Discarded input sections
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
  .text.libgcc.fixed
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_copy_data.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_copy_data.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_copy_data.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_copy_data.o)
+ .text.libgcc.div
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_copy_data.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_copy_data.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_copy_data.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_copy_data.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_copy_data.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_clear_bss.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_clear_bss.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_clear_bss.o)
@@ -184,7 +217,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x14c
+.text           0x00000000      0x19a
  *(.vectors)
  .vectors       0x00000000       0x16 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.3.172/gcc/dev/attiny10/avrtiny/crtattiny10.o
                 0x00000000                __vector_default
@@ -225,8 +258,10 @@ END GROUP
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x00000022       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_clear_bss.o)
-                0x00000022                __do_clear_bss
+ .init4         0x00000022       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_copy_data.o)
+                0x00000022                __do_copy_data
+ .init4         0x00000038       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_clear_bss.o)
+                0x00000038                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -237,33 +272,38 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x00000032        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.3.172/gcc/dev/attiny10/avrtiny/crtattiny10.o
+ .init9         0x00000048        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.3.172/gcc/dev/attiny10/avrtiny/crtattiny10.o
  *(.init9)
  *(.text)
- .text          0x00000036        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.3.172/gcc/dev/attiny10/avrtiny/crtattiny10.o
-                0x00000036                __vector_1
-                0x00000036                __bad_interrupt
-                0x00000036                __vector_6
-                0x00000036                __vector_3
-                0x00000036                __vector_7
-                0x00000036                __vector_5
-                0x00000036                __vector_4
-                0x00000036                __vector_9
-                0x00000036                __vector_2
-                0x00000036                __vector_8
-                0x00000036                __vector_10
-                0x00000038                . = ALIGN (0x2)
+ .text          0x0000004c        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.3.172/gcc/dev/attiny10/avrtiny/crtattiny10.o
+                0x0000004c                __vector_1
+                0x0000004c                __bad_interrupt
+                0x0000004c                __vector_6
+                0x0000004c                __vector_3
+                0x0000004c                __vector_7
+                0x0000004c                __vector_5
+                0x0000004c                __vector_4
+                0x0000004c                __vector_9
+                0x0000004c                __vector_8
+                0x0000004c                __vector_10
+                0x0000004e                . = ALIGN (0x2)
  *(.text.*)
- .text.ws2812_setleds
-                0x00000038       0x78 light_ws2812.o
-                0x00000038                ws2812_setleds
- .text.main     0x000000b0       0x98 main.o
-                0x000000b0                main
-                0x00000148                . = ALIGN (0x2)
+ .text.ws2812_sendarray
+                0x0000004e       0x5e light_ws2812.o
+                0x0000004e                ws2812_sendarray
+ .text.__vector_2
+                0x000000ac       0x32 main.o
+                0x000000ac                __vector_2
+ .text.main     0x000000de       0xa0 main.o
+                0x000000de                main
+ .text.libgcc.div
+                0x0000017e       0x18 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_udivmodqi4.o)
+                0x0000017e                __udivmodqi4
+                0x00000196                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000148        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
-                0x00000148                _exit
-                0x00000148                exit
+ .fini9         0x00000196        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
+                0x00000196                _exit
+                0x00000196                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -282,41 +322,44 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000148        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
+ .fini0         0x00000196        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000014c                _etext = .
+                0x0000019a                _etext = .
 
 .rodata
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.r*)
 
-.data           0x00800040        0x0 load address 0x0000014c
-                [!provide]                PROVIDE (__data_start, .)
+.data           0x00800040        0x2 load address 0x0000019a
+                0x00800040                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
+ .data.selectedColor
+                0x00800040        0x1 main.o
+                0x00800040                selectedColor
  *(.gnu.linkonce.d*)
-                0x00800040                . = ALIGN (0x2)
-                0x00800040                _edata = .
-                [!provide]                PROVIDE (__data_end, .)
+                0x00800042                . = ALIGN (0x2)
+ *fill*         0x00800041        0x1 
+                0x00800042                _edata = .
+                0x00800042                PROVIDE (__data_end, .)
 
-.bss            0x00800040       0x1e
-                0x00800040                PROVIDE (__bss_start, .)
+.bss            0x00800042       0x1b
+                0x00800042                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  *(COMMON)
- COMMON         0x00800040       0x1e main.o
-                0x00800040                colors
-                0x00800058                led
-                0x0080005e                PROVIDE (__bss_end, .)
-                0x0000014c                __data_load_start = LOADADDR (.data)
-                0x0000014c                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00800042       0x1b main.o
+                0x00800042                colors
+                0x0080005d                PROVIDE (__bss_end, .)
+                0x0000019a                __data_load_start = LOADADDR (.data)
+                0x0000019c                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080005e        0x0
+.noinit         0x0080005d        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x0080005e                _end = .
+                0x0080005d                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .lock
@@ -372,51 +415,51 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0x60
+.debug_aranges  0x00000000       0x68
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x40 light_ws2812.o
  .debug_aranges
-                0x00000040       0x20 main.o
+                0x00000040       0x28 main.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0x9ff
+.debug_info     0x00000000      0xa12
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x305 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.3.172/gcc/dev/attiny10/avrtiny/crtattiny10.o
  .debug_info    0x00000305      0x523 light_ws2812.o
- .debug_info    0x00000828      0x1d7 main.o
+ .debug_info    0x00000828      0x1ea main.o
 
-.debug_abbrev   0x00000000      0x59a
+.debug_abbrev   0x00000000      0x5ae
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x2d9 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.3.172/gcc/dev/attiny10/avrtiny/crtattiny10.o
  .debug_abbrev  0x000002d9      0x15f light_ws2812.o
- .debug_abbrev  0x00000438      0x162 main.o
+ .debug_abbrev  0x00000438      0x176 main.o
 
-.debug_line     0x00000000      0x574
+.debug_line     0x00000000      0x56e
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000       0xd9 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.3.172/gcc/dev/attiny10/avrtiny/crtattiny10.o
  .debug_line    0x000000d9      0x2cd light_ws2812.o
- .debug_line    0x000003a6      0x1ce main.o
+ .debug_line    0x000003a6      0x1c8 main.o
 
-.debug_frame    0x00000000       0xa8
+.debug_frame    0x00000000       0xd8
  *(.debug_frame)
  .debug_frame   0x00000000       0x84 light_ws2812.o
- .debug_frame   0x00000084       0x24 main.o
+ .debug_frame   0x00000084       0x54 main.o
 
-.debug_str      0x00000000      0x3a1
+.debug_str      0x00000000      0x3bd
  *(.debug_str)
  .debug_str     0x00000000      0x115 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.3.172/gcc/dev/attiny10/avrtiny/crtattiny10.o
  .debug_str     0x00000115      0x24e light_ws2812.o
                                 0x287 (size before relaxing)
- .debug_str     0x00000363       0x3e main.o
-                                0x203 (size before relaxing)
+ .debug_str     0x00000363       0x5a main.o
+                                0x221 (size before relaxing)
 
-.debug_loc      0x00000000      0x7ce
+.debug_loc      0x00000000      0x874
  *(.debug_loc)
  .debug_loc     0x00000000      0x7af light_ws2812.o
- .debug_loc     0x000007af       0x1f main.o
+ .debug_loc     0x000007af       0xc5 main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -436,10 +479,10 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0x40
+.debug_ranges   0x00000000       0x48
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x30 light_ws2812.o
- .debug_ranges  0x00000030       0x10 main.o
+ .debug_ranges  0x00000030       0x18 main.o
 
 .debug_macro
  *(.debug_macro)

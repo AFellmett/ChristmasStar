@@ -3,23 +3,23 @@ Christmas Star.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000001cc  00000000  00000000  00000094  2**1
+  0 .text         000001c6  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000002  00800040  000001cc  00000260  2**0
+  1 .data         00000002  00800040  000001c6  0000025a  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          0000001b  00800042  00800042  00000262  2**0
+  2 .bss          0000001b  00800042  00800042  0000025c  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000262  2**0
+  3 .comment      00000030  00000000  00000000  0000025c  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000294  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000028c  2**2
                   CONTENTS, READONLY
-  5 .debug_info   00000305  00000000  00000000  000002d0  2**0
+  5 .debug_info   00000305  00000000  00000000  000002c8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 000002d9  00000000  00000000  000005d5  2**0
+  6 .debug_abbrev 000002d9  00000000  00000000  000005cd  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000000d9  00000000  00000000  000008ae  2**0
+  7 .debug_line   000000d9  00000000  00000000  000008a6  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_str    00000115  00000000  00000000  00000987  2**0
+  8 .debug_str    00000115  00000000  00000000  0000097f  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -49,7 +49,7 @@ Disassembly of section .text:
   22:	20 e0       	ldi	r18, 0x00	; 0
   24:	a0 e4       	ldi	r26, 0x40	; 64
   26:	b0 e0       	ldi	r27, 0x00	; 0
-  28:	ec ec       	ldi	r30, 0xCC	; 204
+  28:	e6 ec       	ldi	r30, 0xC6	; 198
   2a:	f1 e4       	ldi	r31, 0x41	; 65
   2c:	02 c0       	rjmp	.+4      	; 0x32 <__do_copy_data+0x10>
   2e:	31 91       	ld	r19, Z+
@@ -72,7 +72,7 @@ Disassembly of section .text:
   44:	b2 07       	cpc	r27, r18
   46:	e1 f7       	brne	.-8      	; 0x40 <.do_clear_bss_loop>
   48:	53 d0       	rcall	.+166    	; 0xf0 <main>
-  4a:	be c0       	rjmp	.+380    	; 0x1c8 <_exit>
+  4a:	bb c0       	rjmp	.+374    	; 0x1c2 <_exit>
 
 0000004c <__bad_interrupt>:
   4c:	d9 cf       	rjmp	.-78     	; 0x0 <__vectors>
@@ -154,7 +154,7 @@ Disassembly of section .text:
   d4:	80 a1       	lds	r24, 0x40	; 0x800040 <__data_start>
   d6:	8f 5f       	subi	r24, 0xFF	; 255
   d8:	69 e0       	ldi	r22, 0x09	; 9
-  da:	6a d0       	rcall	.+212    	; 0x1b0 <__udivmodqi4>
+  da:	67 d0       	rcall	.+206    	; 0x1aa <__udivmodqi4>
   dc:	90 a9       	sts	0x40, r25	; 0x800040 <__data_start>
   de:	9f 91       	pop	r25
   e0:	8f 91       	pop	r24
@@ -204,17 +204,17 @@ Disassembly of section .text:
  134:	18 ab       	sts	0x58, r17	; 0x800058 <__data_end+0x16>
  136:	17 ab       	sts	0x57, r17	; 0x800057 <__data_end+0x15>
  138:	49 ab       	sts	0x59, r20	; 0x800059 <__data_end+0x17>
- 13a:	5b e9       	ldi	r21, 0x9B	; 155
- 13c:	5b ab       	sts	0x5b, r21	; 0x80005b <__data_end+0x19>
- 13e:	1a ab       	sts	0x5a, r17	; 0x80005a <__data_end+0x18>
- 140:	4c ab       	sts	0x5c, r20	; 0x80005c <__data_end+0x1a>
+ 13a:	5b ab       	sts	0x5b, r21	; 0x80005b <__data_end+0x19>
+ 13c:	1a ab       	sts	0x5a, r17	; 0x80005a <__data_end+0x18>
+ 13e:	4c ab       	sts	0x5c, r20	; 0x80005c <__data_end+0x1a>
+ 140:	49 e0       	ldi	r20, 0x09	; 9
  142:	80 a1       	lds	r24, 0x40	; 0x800040 <__data_start>
- 144:	89 30       	cpi	r24, 0x09	; 9
- 146:	99 f0       	breq	.+38     	; 0x16e <__DATA_REGION_LENGTH__+0x6e>
+ 144:	48 17       	cp	r20, r24
+ 146:	a1 f0       	breq	.+40     	; 0x170 <__DATA_REGION_LENGTH__+0x70>
  148:	90 e0       	ldi	r25, 0x00	; 0
  14a:	63 e0       	ldi	r22, 0x03	; 3
  14c:	70 e0       	ldi	r23, 0x00	; 0
- 14e:	1e d0       	rcall	.+60     	; 0x18c <__mulhi3>
+ 14e:	1b d0       	rcall	.+54     	; 0x186 <__mulhi3>
  150:	8e 5b       	subi	r24, 0xBE	; 190
  152:	9f 4f       	sbci	r25, 0xFF	; 255
  154:	63 e0       	ldi	r22, 0x03	; 3
@@ -224,68 +224,65 @@ Disassembly of section .text:
  15c:	90 e0       	ldi	r25, 0x00	; 0
  15e:	63 e0       	ldi	r22, 0x03	; 3
  160:	70 e0       	ldi	r23, 0x00	; 0
- 162:	14 d0       	rcall	.+40     	; 0x18c <__mulhi3>
+ 162:	11 d0       	rcall	.+34     	; 0x186 <__mulhi3>
  164:	8e 5b       	subi	r24, 0xBE	; 190
  166:	9f 4f       	sbci	r25, 0xFF	; 255
  168:	63 e0       	ldi	r22, 0x03	; 3
  16a:	70 e0       	ldi	r23, 0x00	; 0
  16c:	a6 df       	rcall	.-180    	; 0xba <ws2812_sendarray>
- 16e:	4f ef       	ldi	r20, 0xFF	; 255
- 170:	54 e3       	ldi	r21, 0x34	; 52
- 172:	6c e0       	ldi	r22, 0x0C	; 12
- 174:	41 50       	subi	r20, 0x01	; 1
- 176:	50 40       	sbci	r21, 0x00	; 0
- 178:	60 40       	sbci	r22, 0x00	; 0
- 17a:	e1 f7       	brne	.-8      	; 0x174 <__DATA_REGION_LENGTH__+0x74>
- 17c:	00 c0       	rjmp	.+0      	; 0x17e <__DATA_REGION_LENGTH__+0x7e>
- 17e:	00 00       	nop
- 180:	80 a1       	lds	r24, 0x40	; 0x800040 <__data_start>
- 182:	8f 5f       	subi	r24, 0xFF	; 255
- 184:	69 e0       	ldi	r22, 0x09	; 9
- 186:	14 d0       	rcall	.+40     	; 0x1b0 <__udivmodqi4>
- 188:	90 a9       	sts	0x40, r25	; 0x800040 <__data_start>
- 18a:	db cf       	rjmp	.-74     	; 0x142 <__DATA_REGION_LENGTH__+0x42>
+ 16e:	80 a1       	lds	r24, 0x40	; 0x800040 <__data_start>
+ 170:	4f e7       	ldi	r20, 0x7F	; 127
+ 172:	5a e1       	ldi	r21, 0x1A	; 26
+ 174:	66 e0       	ldi	r22, 0x06	; 6
+ 176:	41 50       	subi	r20, 0x01	; 1
+ 178:	50 40       	sbci	r21, 0x00	; 0
+ 17a:	60 40       	sbci	r22, 0x00	; 0
+ 17c:	e1 f7       	brne	.-8      	; 0x176 <__DATA_REGION_LENGTH__+0x76>
+ 17e:	00 c0       	rjmp	.+0      	; 0x180 <__DATA_REGION_LENGTH__+0x80>
+ 180:	00 00       	nop
+ 182:	48 2f       	mov	r20, r24
+ 184:	de cf       	rjmp	.-68     	; 0x142 <__DATA_REGION_LENGTH__+0x42>
 
-0000018c <__mulhi3>:
- 18c:	00 27       	eor	r16, r16
- 18e:	55 27       	eor	r21, r21
- 190:	04 c0       	rjmp	.+8      	; 0x19a <__mulhi3+0xe>
- 192:	08 0f       	add	r16, r24
- 194:	59 1f       	adc	r21, r25
- 196:	88 0f       	add	r24, r24
- 198:	99 1f       	adc	r25, r25
- 19a:	80 50       	subi	r24, 0x00	; 0
- 19c:	90 40       	sbci	r25, 0x00	; 0
- 19e:	29 f0       	breq	.+10     	; 0x1aa <__mulhi3+0x1e>
- 1a0:	76 95       	lsr	r23
- 1a2:	67 95       	ror	r22
- 1a4:	b0 f3       	brcs	.-20     	; 0x192 <__mulhi3+0x6>
- 1a6:	71 07       	cpc	r23, r17
- 1a8:	b1 f7       	brne	.-20     	; 0x196 <__mulhi3+0xa>
- 1aa:	80 2f       	mov	r24, r16
- 1ac:	95 2f       	mov	r25, r21
- 1ae:	08 95       	ret
+00000186 <__mulhi3>:
+ 186:	00 27       	eor	r16, r16
+ 188:	55 27       	eor	r21, r21
+ 18a:	04 c0       	rjmp	.+8      	; 0x194 <__mulhi3+0xe>
+ 18c:	08 0f       	add	r16, r24
+ 18e:	59 1f       	adc	r21, r25
+ 190:	88 0f       	add	r24, r24
+ 192:	99 1f       	adc	r25, r25
+ 194:	80 50       	subi	r24, 0x00	; 0
+ 196:	90 40       	sbci	r25, 0x00	; 0
+ 198:	29 f0       	breq	.+10     	; 0x1a4 <__mulhi3+0x1e>
+ 19a:	76 95       	lsr	r23
+ 19c:	67 95       	ror	r22
+ 19e:	b0 f3       	brcs	.-20     	; 0x18c <__mulhi3+0x6>
+ 1a0:	71 07       	cpc	r23, r17
+ 1a2:	b1 f7       	brne	.-20     	; 0x190 <__mulhi3+0xa>
+ 1a4:	80 2f       	mov	r24, r16
+ 1a6:	95 2f       	mov	r25, r21
+ 1a8:	08 95       	ret
 
-000001b0 <__udivmodqi4>:
- 1b0:	99 1b       	sub	r25, r25
- 1b2:	79 e0       	ldi	r23, 0x09	; 9
- 1b4:	04 c0       	rjmp	.+8      	; 0x1be <__udivmodqi4_ep>
+000001aa <__udivmodqi4>:
+ 1aa:	99 1b       	sub	r25, r25
+ 1ac:	79 e0       	ldi	r23, 0x09	; 9
+ 1ae:	04 c0       	rjmp	.+8      	; 0x1b8 <__udivmodqi4_ep>
 
-000001b6 <__udivmodqi4_loop>:
- 1b6:	99 1f       	adc	r25, r25
- 1b8:	96 17       	cp	r25, r22
- 1ba:	08 f0       	brcs	.+2      	; 0x1be <__udivmodqi4_ep>
- 1bc:	96 1b       	sub	r25, r22
+000001b0 <__udivmodqi4_loop>:
+ 1b0:	99 1f       	adc	r25, r25
+ 1b2:	96 17       	cp	r25, r22
+ 1b4:	08 f0       	brcs	.+2      	; 0x1b8 <__udivmodqi4_ep>
+ 1b6:	96 1b       	sub	r25, r22
 
-000001be <__udivmodqi4_ep>:
- 1be:	88 1f       	adc	r24, r24
- 1c0:	7a 95       	dec	r23
- 1c2:	c9 f7       	brne	.-14     	; 0x1b6 <__udivmodqi4_loop>
- 1c4:	80 95       	com	r24
- 1c6:	08 95       	ret
+000001b8 <__udivmodqi4_ep>:
+ 1b8:	88 1f       	adc	r24, r24
+ 1ba:	7a 95       	dec	r23
+ 1bc:	c9 f7       	brne	.-14     	; 0x1b0 <__udivmodqi4_loop>
+ 1be:	80 95       	com	r24
+ 1c0:	08 95       	ret
 
-000001c8 <_exit>:
- 1c8:	f8 94       	cli
+000001c2 <_exit>:
+ 1c2:	f8 94       	cli
 
-000001ca <__stop_program>:
- 1ca:	ff cf       	rjmp	.-2      	; 0x1ca <__stop_program>
+000001c4 <__stop_program>:
+ 1c4:	ff cf       	rjmp	.-2      	; 0x1c4 <__stop_program>
