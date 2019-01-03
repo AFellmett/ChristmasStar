@@ -166,9 +166,6 @@
     <Compile Include="light_ws2812.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="light_ws2812_config.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
